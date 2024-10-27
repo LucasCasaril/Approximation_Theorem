@@ -31,7 +31,6 @@ net.divideParam.testRatio = 0.00;
 net = init(net);
 
 %% Training
-
 net.trainParam.showWindow = true;
 net.layers{1}.dimensions = 30;          
 net.layers{1}.transferFcn = 'tansig';   
@@ -71,6 +70,15 @@ grid on;
 title('Approximation Error');
 xlabel('x');
 ylabel('Absolute Error');
+
+figure;
+plot(x, actual_sine, 'b-', 'LineWidth', 2, 'DisplayName', 'Actual Sine');
+hold on;
+plot(x, y_pred, 'r--', 'LineWidth', 2, 'DisplayName', 'Neural Network');
+legend('Location', 'best');
+title(sprintf('Neural Network Sine Approximation (30 hidden neurons)'));
+xlabel('x');
+ylabel('y');
 
 % Display error metrics
 fprintf('Maximum absolute error: %e\n', max_error);

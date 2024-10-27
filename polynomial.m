@@ -10,7 +10,7 @@ x = linspace(-2*pi, 2*pi, 100000);
 actual_sine = sin(x);
 
 % Parameters for Taylor series
-n_terms = 6;  % Number of terms in the approximation
+n_terms = 11;  % Number of terms in the approximation
 
 % Initialize approximation
 approx_sine = zeros(size(x));
@@ -43,6 +43,16 @@ grid on;
 title('Approximation Error');
 xlabel('x');
 ylabel('Absolute Error');
+
+% Plotting
+figure;
+plot(x, actual_sine, 'b-', 'LineWidth', 2, 'DisplayName', 'Actual Sine');
+hold on;
+plot(x, approx_sine, 'r--', 'LineWidth', 2, 'DisplayName', 'Approximation');
+legend('Location', 'best');
+title(sprintf('Sine Function Approximation (%d terms)', n_terms));
+xlabel('x');
+ylabel('y');
 
 % Display maximum error
 fprintf('Maximum absolute error: %e\n', max_error);
